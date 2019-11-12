@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .red{
+      color: red;
+    }
+    .choose{
+      color: green;
+    }
+    .line{
+     font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h2 :class="color">{{message1}}</h2>
+  <h2 class="title" :class="{choose: ischoose, line: isline}">{{message2}}</h2>
+  <h2 class="title" :class="getClass()">{{message3}}</h2>
+  <button @click="btnclick">按钮</button>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message1: "方法1",
+      message2: "方法2",
+      message3: "方法3",
+
+      color: 'red',
+      ischoose: true,
+      isline: true
+    },
+    methods: {
+      btnclick: function () {
+        this.ischoose = !this.ischoose;
+      },
+      getClass: function () {
+        return {choose: this.ischoose, line: this.isline}
+      }
+    }
+  })
+</script>
+</body>
+</html>

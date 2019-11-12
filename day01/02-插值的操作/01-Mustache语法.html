@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<<script src="../js/vue.js"></script>
+<div id="app">
+  <h2>{{message + lastName}}</h2>
+  <h2>{{counter * 2}}</h2>
+
+</div>
+<script>
+  //一般用在<>这里</>,用来填充内容
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      firstName: 'zhang',
+      lastName: 'sanfeng',
+      counter: 100
+    }
+  })
+</script>
+</body>
+</html>

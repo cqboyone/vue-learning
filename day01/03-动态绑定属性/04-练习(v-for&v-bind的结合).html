@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .clicked{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <ul>
+    <li :class="getClass(index)" v-for="(item,index) in movies" @click="change(index)">{{index + '-' + item}}</li>
+  </ul>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      movies: ['生活大爆炸', '迷失', '越狱', '神盾局特工'],
+      currentId: null
+    },
+    methods: {
+      getClass: function (index) {
+        return {clicked: this.currentId == index}
+      },
+      change: function (index) {
+        this.currentId = index
+      }
+    }
+  })
+</script>
+</body>
+</html>
