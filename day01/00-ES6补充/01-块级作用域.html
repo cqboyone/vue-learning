@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+<script>
+  // // 1.var 没有作用域
+  // {
+  //   var name = '名字'
+  //   console.log(name)
+  // }
+  //   console.log(name)
+  //
+  // // 2.没有作用域引起的问题
+  // var func;
+  // if(true){
+  //   var name = 'why'
+  //   func = function () {
+  //     console.log(name)
+  //   }
+  //   func()
+  // }
+  //
+  // // 此处会改变打印类容
+  // name = 'copy'
+  // func()
+
+  // // 3.for没有作用域. for执行完后i变成5,每个点击事件以用的是同一个i,所以都显示5
+  // var btns = document.getElementsByTagName('button')
+  // for(var i=0; i<btns.length; i++){
+  //   btns[i].addEventListener('click',function () {
+  //     console.log('第' + i + '个按钮被点击');
+  //   })
+  // }
+
+  //4. 闭包见后面
+
+  // 5.let
+  var btns = document.getElementsByTagName('button')
+  for(let i=0; i<btns.length; i++){
+    btns[i].addEventListener('click',function () {
+      console.log('第' + i + '个按钮被点击');
+    })
+  }
+
+</script>
+
+
+</body>
+</html>

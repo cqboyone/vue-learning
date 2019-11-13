@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 1.const使用前必须赋值
+  // 2.const修饰的标识符被赋值后不能被修改
+  // 3.const指向的对象不能被修改,但是对象内部的属性可以被修改.即const的引用地址不能修改,引用的对象可以改
+
+  // 错误案例
+  // const a ='1'
+  // a=2 //会报错
+
+  // 正确案例
+  const obj = {
+    name: 'hh'
+  }
+  obj.name = 'gg'
+  console.log(obj.name);
+  obj.age = 1
+  console.log(obj);
+
+</script>
+
+</body>
+</html>
