@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <!-- 通过Boolean值判断是否显示 -->
+  <h2 v-if=isShow>
+    <div>1</div>
+    <div>1</div>
+  </h2>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      isShow: true
+    }
+  })
+</script>
+</body>
+</html>

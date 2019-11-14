@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h2>{{message}}</h2>
+  <h2 v-if="score>=90">优秀</h2>
+  <h2 v-else-if="score>=80">良好</h2>
+  <h2 v-else-if="score>=60">及格</h2>
+  <h2 v-else>不及格</h2>
+  ```````
+  <h2>{{result}}</h2>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      score : 99
+    },
+    computed:{
+      result(){
+        let showStr = ''
+        if(this.score >= 90){
+          showStr = '优秀'
+        }else if(this.score>=80){
+          showStr ='良好'
+        }else {
+          showStr='待提升'
+        }
+        return showStr
+      }
+    }
+  })
+</script>
+</body>
+</html>

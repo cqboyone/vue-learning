@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 已经输入input的值在切换后还在. 用key可以来做标识,key不一样就不会复用value -->
+<script src="../js/vue.js"></script>
+<div id="app">
+  <span v-if="isUser">
+  <label for="userName">用户账号</label>
+    <input type="text" id="userName" placeholder="用户账号" key="username">
+  </span>
+  <span v-else>
+    <label for="email">用户邮箱</label>
+    <input type="text" id="email" placeholder="用户邮箱" key="email">
+  </span>
+  <button @click="isUser=!isUser">切换类型</button>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      isUser: true
+    },
+    methods: {}
+  })
+</script>
+</body>
+</html>

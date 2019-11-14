@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <!-- v-if:控制渲染,如果为false则不会渲染.-->
+  <h2 v-if="isShow">{{message}}1</h2>
+  <!-- v-show:控制显示,一定渲染. 当为false时,只是增加了style="display: none;" -->
+  <h2 v-show="isShow">{{message}}2</h2>
+
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      isShow: true
+    }
+  })
+</script>
+</body>
+</html>
