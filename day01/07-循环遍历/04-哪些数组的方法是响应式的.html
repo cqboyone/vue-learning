@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h2>{{message}}</h2>
+  <button @click="btnClick">点击</button>
+  <ul>
+    <li v-for="(item,index) in letters" :key="item">{{index}} : {{item}}</li>
+  </ul>
+
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      letters: ['A', 'B', 'C', 'D', 'E'],// 若中间插入值,内部diff算法会增加内存消耗,所以要绑定key
+    },
+    methods: {
+      btnClick() {
+        // 响应式
+        // 1. push在最后增加一个或者多个
+        // this.letters.push('aaa')
+
+        // 2. pop()删除最后一个
+        // this.letters.pop()
+
+        // 3. shift()删除第一个
+        // this.letters.shift()
+
+        // 4. unshift 在第一个前增加一个或者多个
+        // this.letters.unshift('aaa')
+
+        // 5. splice
+        // 删除元素
+        // this.letters.splice(1,1)
+        // 插入
+        // this.letters.splice(1,0,'插入','元素')
+        // 替换
+        // this.letters.splice(1,this.letters.length-1,'被替换','的元素')
+
+        // 6.sort()排序
+        // 7.reverse()反转
+
+        // 非响应式
+        // 1. 通过索引修改数据后页面无法响应,vue内部没有监听更改下标值来响应的方式
+        // this.letters[0]='bbbb' 无法响应
+        // Vue.set(this.letters, 0 ,'aaaa')// 可以响应
+        this.letters.splice(0,1,'aaa')// 可以响应
+      }
+    }
+  })
+</script>
+</body>
+</html>

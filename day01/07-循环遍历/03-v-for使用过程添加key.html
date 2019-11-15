@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h2>{{message}}</h2>
+  <ul>
+    <li v-for="(item,index) in letters" :key="item">{{index}} : {{item}}</li>
+  </ul>
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      letters: ['A', 'B', 'C', 'D', 'E'],// 若中间插入值,内部diff算法会增加内存消耗,所以要绑定key
+    }
+  })
+</script>
+</body>
+</html>
