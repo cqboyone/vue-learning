@@ -34,11 +34,22 @@ const app = new Vue({
       },
       computed: {
         totalPrice() {
-          let totalPrice = 0
-          for (let item of this.books) {
-            totalPrice += item.price * item.count
-          }
-          return totalPrice
+          // let totalPrice = 0
+          // // 遍历方法1
+          // for (let item of this.books) {
+          //   totalPrice += item.price * item.count
+          // }
+
+          // 遍历方法2
+          // for(let i in this.books){
+          //   totalPrice += this.books[i].price * this.books[i].count
+          // }
+
+          // 遍历数组方法3
+          return this.books.reduce(function (preVlue, book) {
+            return preVlue + book.price * book.count
+          }, 0)
+
         }
       },
       methods: {
