@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h2>{{message}}</h2>
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+</div>
+<script>
+  // ES6补充
+  // ``这玩意可以支持不用加号换行
+
+  // 1.创建组件构造器对象
+  const cpnC = Vue.extend({
+    template: `<div>
+                <p>我是内容111</p>
+                <p>我是内容222</p>
+                <p>我是内容333</p>
+                <p>我是内容444</p>
+               </div>`
+  })
+
+  // 2.注册组件;第一个参数是组件表示即尖括号里面的字符，第二个是组件构造器
+  Vue.component('my-cpn',cpnC)
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣"
+    }
+  })
+</script>
+
+<comment>
+
+</comment>
+</body>
+</html>
