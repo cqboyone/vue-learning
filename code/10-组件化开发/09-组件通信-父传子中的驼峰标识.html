@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <!-- 这里不支持驼峰,应该用-加上小写代替大写 -->
+  <cpn :c-info="info" :child-my-message="message"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <p>{{cInfo}}</p>
+    <p>{{childMyMessage}}</p>
+  </div>
+</template>
+<script>
+  const cpn = {
+    template: '#cpn',
+    props: {
+      cInfo: {
+        type: Object,
+        default() {
+          return {}
+        }
+      },
+      childMyMessage: {
+        type: String,
+        default: ''
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣",
+      info: {
+        name: 'vv',
+        age: 10,
+        height: 1.8
+      }
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+</body>
+</html>
