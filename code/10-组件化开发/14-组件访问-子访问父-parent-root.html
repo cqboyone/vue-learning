@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>我是cpn组件</h2>
+    <ccpn></ccpn>
+  </div>
+</template>
+
+<template id="ccpn">
+  <div>
+    <h2>我是子组件</h2>
+    <button @click="btnClick">button</button>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "vue很有趣"
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name: '我是cpn组件的name'
+          }
+        },
+        components: {
+          // 子组件的子组件
+          ccpn: {
+            template: '#ccpn',
+            methods: {
+              btnClick() {
+                // 1. 访问父组件:this.$parent. 实际开发中不推荐.因为其他父组件可能会没有name属性,导致组件的复用性变低.
+                console.log(this.$parent.name);
+
+                // 2. 访问根组件. 一般也很少用.
+                console.log(this.$root.message);
+              }
+            },
+          }
+        }
+      }
+    },
+
+  })
+</script>
+</body>
+</html>
