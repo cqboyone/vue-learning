@@ -41,16 +41,18 @@
       }
     },
     methods: {
-      number2Change(event) {
-        // 1. 将input的value 赋值给dnumber2
-        this.dnumber2 = event.target.value * 1;
-        // 2. 把dbumber2发射给父组件
-        this.$emit('num2change', this.dnumber2);
-      }
+      // number2Change(event) {
+      //   // 1. 将input的value 赋值给dnumber2
+      //   this.dnumber2 = event.target.value * 1;
+      //   // 2. 把dbumber2发射给父组件
+      //   this.$emit('num2change', this.dnumber2);
+      // }
     },
     watch: {
-      dnumber2(oldValue) {
-        this.$emit('num2change', oldValue * 1);
+      // 括号内一个参数就是new; 两个参数:前面为new,后面为old
+      dnumber2(newValue) {
+        console.log(newValue);
+        this.$emit('num2change', newValue * 1);
       }
     }
   }
