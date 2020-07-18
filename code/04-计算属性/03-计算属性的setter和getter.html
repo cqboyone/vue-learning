@@ -19,12 +19,13 @@
       lastName: "我是LastName",
     },
     computed: {
-      // 简写
+      // // 简写
       // fullName: function(){
-      //
+      //   return this.firstName + ' ' + this.lastName
       // },
       // 非简写
       fullName: {
+        // set 方法不常用
         set: function (newValue) {
           const names = newValue.split(' ')
           this.firstName = names[0]
