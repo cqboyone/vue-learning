@@ -562,60 +562,68 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_info__ = __webpack_require__(4);
-//CommonJs模块化规范
-const {add,mul} = __webpack_require__(3)
-console.log(add(1,2))
-console.log(mul(1,2))
 
+
+var _info = __webpack_require__(3);
+
+//CommonJs模块化规范
+var _require = __webpack_require__(4),
+    add = _require.add,
+    mul = _require.mul;
+
+console.log(add(1, 2));
+console.log(mul(1, 2));
 
 //es6模块化规范
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["b" /* name */])
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["a" /* age */])
+console.log(_info.name);
+console.log(_info.age);
 
 // 依赖css文件
-__webpack_require__(5)
+__webpack_require__(5);
 
 // 依赖less文件
-__webpack_require__(10)
+__webpack_require__(10);
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//es6
+
+var name = exports.name = '小红';
+var age = exports.age = 10;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 //commonJs
 
 function add(num1, num2) {
-  return num1 + num2
+  return num1 + num2;
 }
 
 function mul(num1, num2) {
-  return num1 * num2
+  return num1 * num2;
 }
 
 module.exports = {
-  add,
-  mul
-}
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//es6
-
-const name = '小红'
-/* harmony export (immutable) */ __webpack_exports__["b"] = name;
-
-const age = 10
-/* harmony export (immutable) */ __webpack_exports__["a"] = age;
-
+  add: add,
+  mul: mul
+};
 
 /***/ }),
 /* 5 */
