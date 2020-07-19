@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>购物车</title>
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-for="(item,index) in books">
+    <tr v-for="(item,index) in books" :key="item">
       <td>{{index}}</td>
       <td>{{item.name}}</td>
       <td>{{item.date}}</td>
