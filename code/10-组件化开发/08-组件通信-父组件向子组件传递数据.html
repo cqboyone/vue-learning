@@ -8,7 +8,7 @@
 <script src="../js/vue.js"></script>
 <div id="app">
   <!--  <h2>{{message}}</h2>-->
-  <cpn :cmessage="message"></cpn>
+  <cpn :cmessage="message" :cmovies="movies"></cpn>
   <!--  <cpn :cmessage="message"></cpn>-->
 </div>
 
@@ -38,7 +38,7 @@
       cmovies: {
         type: Array,
         default() {
-          return ['f']
+          return ['黑客帝国','猩球崛起']
         }
       },
       cmessage: {
