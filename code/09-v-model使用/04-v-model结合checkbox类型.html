@@ -7,14 +7,15 @@
 <body>
 <script src="../js/vue.js"></script>
 <div id="app">
-  <!-- 1. 单选 -->
-  <!--  <label for="agree">-->
-  <!--    <input type="checkbox" id="agree" v-model="isAgree">同意协议-->
-  <!--  </label>-->
-  <!--  <h2>你选择的是{{isAgree}}</h2>-->
-  <!--  <button :disabled="!isAgree">下一步</button>-->
+  1. 单选
+  <label for="agree">
+    <input type="checkbox" id="agree" v-model="isAgree">同意协议
+  </label>
+  <h2>你选择的是{{isAgree}}</h2>
+  <button :disabled="!isAgree">下一步</button>
+  <p></p>
 
-  <!-- 2. 多选-->
+  2. 多选
   <!--  <label for="basketball">-->
   <!--    <input id="basketball" type="checkbox" value="篮球" v-model="hobbies">篮球-->
   <!--  </label>-->
@@ -41,7 +42,7 @@
       message: "vue很有趣",
       isAgree: false,//单选框
       hobbies: [],//多选框
-      originHobbies: ['篮球', '篮球2']
+      originHobbies: ['篮球', '篮球2', '篮球3']
     }
   })
 </script>
