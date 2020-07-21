@@ -18,10 +18,13 @@ require('./css/special.less')
 
 // 5. 使用vue开发
 import Vue from 'vue'
+// import App from './vue/app'
+import App from "./vue/App.vue";
 
-const app = new Vue({
+new Vue({
   el: "#app2",
-  data: {
-    message: '你好'
+  template: '<App/>',
+  components: {
+    App
   }
 })
