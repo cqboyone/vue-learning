@@ -70,11 +70,17 @@ module.exports = {
     }
   },
   plugins: [
-      new webpack.BannerPlugin('最终版权归vv所有'),
-      new htmlWebpackPlugin({
-        template: 'index.html'
-      }),
-      new ugliflyjs,
-  ]
+    new webpack.BannerPlugin('最终版权归vv所有'),
+    new htmlWebpackPlugin({
+      template: 'index.html'
+    }),
+    // new ugliflyjs, //开发阶段不用丑化代码
+  ],
+  // 生产环境不需要
+  devServer: {
+    contentBase: './dist',
+    inline: true,
+    port: 8087
+  },
 
 }
