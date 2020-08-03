@@ -1,23 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h2>我是app组件</h2>
+    <!--    1.直接用router-link 标签-->
+    <!--    <router-link to="/home" tag="button">首页</router-link>-->
+    <!--    <router-link to="/about" tag="button">关于</router-link>-->
+    <!--    2.通过代码改变路由-->
+    <button @click="homeClick">首页</button>
+    <button @click="aboutClick">关于</button>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    homeClick() {
+      this.$router.push('/home')
+    },
+    aboutClick() {
+      this.$router.push('/about')
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.active {
+  color: red;
 }
 </style>
