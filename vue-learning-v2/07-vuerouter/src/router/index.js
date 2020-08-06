@@ -5,6 +5,9 @@ import Router from 'vue-router'
 // import User from "../components/User";
 
 const Home = ()=>import('../components/Home')
+const HomeNews = ()=>import('../components/HomeNews')
+const HomeMessage = ()=>import('../components/HomeMessage')
+
 const About = ()=>import('../components/About')
 const User = ()=>import('../components/User')
 
@@ -18,7 +21,21 @@ export default new Router({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      children:[
+        {
+          path: '',
+          redirect:'news'
+        },
+        {
+          path:'news',
+          component:HomeNews
+        },
+        {
+          path:'message',
+          component:HomeMessage
+        }
+      ]
     },
     {
       path: '/about',

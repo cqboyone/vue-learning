@@ -5,12 +5,15 @@
     <!--    <router-link to="/home" tag="button">首页</router-link>-->
     <!--    <router-link to="/about" tag="button">关于</router-link>-->
     <!--    2.通过代码改变路由-->
-    <button @click="homeClick">首页</button>
-    <button @click="aboutClick">关于</button>
-    <router-view></router-view>
+    <!--    <button @click="homeClick">首页</button>-->
+    <!--    <button @click="aboutClick">关于</button>-->
+    <!--    <router-view></router-view>-->
 
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
     <!--    3.动态路由-->
     <router-link :to="'/user/'+userId">用户</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
