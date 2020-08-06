@@ -8,14 +8,23 @@
     <button @click="homeClick">首页</button>
     <button @click="aboutClick">关于</button>
     <router-view></router-view>
+
+    <!--    3.动态路由-->
+    <router-link :to="'/user/'+userId">用户</router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      userId: 'zhangsan'
+    }
+  },
   methods: {
     homeClick() {
+      //这里的$router指的是router/index.js里面new出来的那个对象
       this.$router.push('/home')
     },
     aboutClick() {
