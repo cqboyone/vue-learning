@@ -9,10 +9,17 @@
     <!--    <button @click="aboutClick">关于</button>-->
     <!--    <router-view></router-view>-->
 
-    <router-link to="/home">首页</router-link>
-    <router-link to="/about">关于</router-link>
-    <!--    3.动态路由-->
-    <router-link :to="'/user/'+userId">用户</router-link>
+    <!--    <router-link to="/home">首页</router-link>-->
+    <!--    <router-link to="/about">关于</router-link>-->
+    <!--    &lt;!&ndash;    3.动态路由&ndash;&gt;-->
+    <!--    <router-link :to="'/user/'+userId">用户</router-link>-->
+    <!--    &lt;!&ndash;    <router-link to="/profile">档案</router-link>&ndash;&gt;-->
+    <!--    <router-link :to="profile">档案</router-link>-->
+
+    <button @click="userClick">用户</button>
+    <button @click="proFileClick">档案</button>
+
+
     <router-view></router-view>
   </div>
 </template>
@@ -22,7 +29,14 @@ export default {
   name: 'App',
   data() {
     return {
-      userId: 'zhangsan'
+      userId: 'zhangsan',
+      profile: {
+        path: '/profile',
+        query: {
+          name: 'vv',
+          age: 21
+        }
+      }
     }
   },
   methods: {
@@ -32,6 +46,12 @@ export default {
     },
     aboutClick() {
       this.$router.push('/about')
+    },
+    userClick() {
+      this.$router.push('/user/' + this.userId)
+    },
+    proFileClick() {
+      this.$router.push(this.profile)
     }
   }
 }
