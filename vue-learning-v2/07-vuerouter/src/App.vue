@@ -9,8 +9,8 @@
     <!--    <button @click="aboutClick">关于</button>-->
     <!--    <router-view></router-view>-->
 
-    <!--    <router-link to="/home">首页</router-link>-->
-    <!--    <router-link to="/about">关于</router-link>-->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
     <!--    &lt;!&ndash;    3.动态路由&ndash;&gt;-->
     <!--    <router-link :to="'/user/'+userId">用户</router-link>-->
     <!--    &lt;!&ndash;    <router-link to="/profile">档案</router-link>&ndash;&gt;-->

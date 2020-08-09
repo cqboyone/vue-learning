@@ -14,7 +14,7 @@ const Profile = () => import('../components/Profile')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '',
@@ -23,6 +23,9 @@ export default new Router({
     {
       path: '/home',
       component: Home,
+      meta: {
+        title: '首页'
+      },
       children: [
         {
           path: '',
@@ -40,18 +43,35 @@ export default new Router({
     },
     {
       path: '/about',
-      component: About
+      component: About,
+      meta: {
+        title: '关于'
+      },
     },
     {
       path: '/user/:userId2',
-      component: User
+      component: User,
+      meta: {
+        title: '用户'
+      },
     },
     {
       path: '/profile',
-      component: Profile
+      component: Profile,
+      meta: {
+        title: '档案'
+      },
     }
   ],
   // 去掉hash值
   mode: 'history',
   linkActiveClass: 'active'
+})
+
+export default router
+
+router.beforeEach((to, from, next) => {
+  // 从from跳转到to
+  document.title = to.matched[0].meta.title
+  next()
 })
