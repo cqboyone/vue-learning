@@ -47,6 +47,11 @@ const router = new Router({
       meta: {
         title: '关于'
       },
+      // 独享守卫
+      beforeEnter: (to, from, next) => {
+        console.log('***');
+        next()
+      }
     },
     {
       path: '/user/:userId2',
@@ -69,9 +74,17 @@ const router = new Router({
 })
 
 export default router
-
+// 全局守卫
+// 前置守卫/钩子（在跳转之前运行的回调函数）
 router.beforeEach((to, from, next) => {
   // 从from跳转到to
   document.title = to.matched[0].meta.title
+  console.log('+++');
   next()
+})
+
+// 全局守卫
+// 后置钩子
+router.afterEach((to, from) => {
+  console.log('---');
 })
