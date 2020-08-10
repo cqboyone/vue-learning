@@ -19,7 +19,8 @@
     <button @click="userClick">用户</button>
     <button @click="proFileClick">档案</button>
 
-    <keep-alive>
+    <!--    在exclude中填写排除保活的组件的name，多个用逗号隔开-->
+    <keep-alive exclude="Profile">
       <router-view/>
     </keep-alive>
   </div>

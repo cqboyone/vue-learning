@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'Profile',
   data() {
     return {
       name: this.$route.query.name
@@ -18,6 +19,12 @@ export default {
       return this.$route.query.age
 
     }
+  },
+  created() {
+    console.log('Profile created');
+  },
+  destroyed() {
+    console.log('Profile destroyed');
   }
 }
 </script>
