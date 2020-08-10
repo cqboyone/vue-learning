@@ -11,9 +11,32 @@
 <script>
 export default {
   name: "Home",
-  // created() {
-  //   document.title='首页'
-  // }
+  data() {
+    return {
+      message: '你好啊',
+      path: '/home/news',
+    }
+  },
+  created() {
+    console.log('Home created');
+  },
+  destroyed() {
+    console.log('Home destroyed');
+  },
+  // 处于活动状态的时候执行。只有在该组件被保持了状态，即被被<keep-alive>包裹了才执行。
+  activated() {
+    // console.log('activated');
+    this.$router.push(this.path)
+  },
+  // 处于不活动状态的时候执行。只有在该组件被保持了状态，即被被<keep-alive>包裹了才执行。
+  // deactivated() {
+  //   // console.log('deactivated');
+  // },
+  beforeRouteLeave(to, from, next) {
+    this.path = this.$route.path
+    // console.log(this.path);
+    next()
+  }
 }
 </script>
 

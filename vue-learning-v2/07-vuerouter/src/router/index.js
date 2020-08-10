@@ -27,10 +27,10 @@ const router = new Router({
         title: '首页'
       },
       children: [
-        {
-          path: '',
-          redirect: 'news'
-        },
+        // {
+        //   path: '',
+        //   redirect: 'news'
+        // },
         {
           path: 'news',
           component: HomeNews
@@ -49,7 +49,7 @@ const router = new Router({
       },
       // 独享守卫
       beforeEnter: (to, from, next) => {
-        console.log('***');
+        // console.log('***');
         next()
       }
     },
@@ -79,12 +79,12 @@ export default router
 router.beforeEach((to, from, next) => {
   // 从from跳转到to
   document.title = to.matched[0].meta.title
-  console.log('+++');
+  // console.log('+++');
   next()
 })
 
 // 全局守卫
 // 后置钩子
 router.afterEach((to, from) => {
-  console.log('---');
+  // console.log('---');
 })

@@ -19,8 +19,9 @@
     <button @click="userClick">用户</button>
     <button @click="proFileClick">档案</button>
 
-
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
