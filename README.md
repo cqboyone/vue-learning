@@ -1,3 +1,3 @@
 # vue-learn
 用于记录学习vue
-- [day01](code/day01.md)
+- tabbar笔记没有记录完整，需要补齐
