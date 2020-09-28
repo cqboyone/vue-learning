@@ -36,7 +36,7 @@ export default {
     }
   },
   components: {
-    TabControl, NavBar, HomeSwiper, HomeRecommendView, FeatureView,
+    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl,
   },
   created() {
     this.getHomeMultidata();
