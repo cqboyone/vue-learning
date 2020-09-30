@@ -6,7 +6,8 @@
     <home-swiper :banners="banners"></home-swiper>
     <home-recommend-view :recommends="recommends"></home-recommend-view>
     <feature-view/>
-    <tab-control :title="['流行','新款','精选']" class="tab-control"/>
+    <tab-control :title="goodsName" class="tab-control" @tabClick="tabClick"/>
+    <goods-list :goods="showGoods"/>
 
     <div style="height: 1000px"></div>
   </div>
@@ -17,6 +18,7 @@ import * as homeApi from "@/network/home";
 
 import TabControl from "@/components/content/tabControl/TabControl";
 import NavBar from "@/components/common/navbar/NavBar";
+import GoodsList from "@/components/content/goods/GoodsList";
 
 import HomeSwiper from "@/views/home/childComps/HomeSwiper";
 import HomeRecommendView from "@/views/home/childComps/HomeRecommendView";
@@ -32,11 +34,19 @@ export default {
         'pop': {page: 0, list: []},
         'new': {page: 0, list: []},
         'sell': {page: 0, list: []},
-      }
+      },
+      goodsName: ['流行', '新款', '精选'],
+      goodsType: ['pop', 'new', 'sell'],
+      goodsIndex: 0,
     }
   },
+  computed: {
+    showGoods() {
+      return this.goods[this.goodsType[this.goodsIndex]].list
+    },
+  },
   components: {
-    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl,
+    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl, GoodsList,
   },
   created() {
     this.getHomeMultidata();
@@ -45,6 +55,9 @@ export default {
     this.getGoods('sell',)
   },
   methods: {
+    /**
+     * 网络请求相关
+     */
     getHomeMultidata() {
       homeApi.getHomeMultidata().then(res => {
         // console.log(res);
@@ -63,6 +76,13 @@ export default {
       }).catch(err => {
         console.log(err);
       })
+    },
+
+    /**
+     * 事件监听
+     */
+    tabClick(index) {
+      this.goodsIndex = index;
     }
   }
 }

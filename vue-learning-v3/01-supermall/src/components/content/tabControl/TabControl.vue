@@ -26,6 +26,7 @@ export default {
   methods: {
     chooseTab(index) {
       this.currentIndex = index;
+      this.$emit('tabClick', index);
     },
   }
 
