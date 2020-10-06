@@ -3,14 +3,14 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content">
+    <scroll class="content" ref="scroll">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend-view :recommends="recommends"></home-recommend-view>
       <feature-view/>
       <tab-control :title="goodsName" class="tab-control" @tabClick="tabClick"/>
       <goods-list :goods="showGoods"/>
     </scroll>
-
+    <back-top @click.native="backClick"/>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ import TabControl from "@/components/content/tabControl/TabControl";
 import NavBar from "@/components/common/navbar/NavBar";
 import GoodsList from "@/components/content/goods/GoodsList";
 import Scroll from "@/components/common/scroll/Scroll";
+import BackTop from "@/components/content/backTop/BackTop";
 
 import HomeSwiper from "@/views/home/childComps/HomeSwiper";
 import HomeRecommendView from "@/views/home/childComps/HomeRecommendView";
@@ -48,7 +49,7 @@ export default {
     },
   },
   components: {
-    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl, GoodsList, Scroll,
+    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl, GoodsList, Scroll, BackTop,
   },
   created() {
     this.getHomeMultidata();
@@ -85,6 +86,9 @@ export default {
      */
     tabClick(index) {
       this.goodsIndex = index;
+    },
+    backClick() {
+      this.$refs.scroll.scrollTo(0, 0)
     }
   }
 }
