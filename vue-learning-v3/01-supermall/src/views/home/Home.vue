@@ -3,13 +3,14 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <home-recommend-view :recommends="recommends"></home-recommend-view>
-    <feature-view/>
-    <tab-control :title="goodsName" class="tab-control" @tabClick="tabClick"/>
-    <goods-list :goods="showGoods"/>
+    <scroll class="content">
+      <home-swiper :banners="banners"></home-swiper>
+      <home-recommend-view :recommends="recommends"></home-recommend-view>
+      <feature-view/>
+      <tab-control :title="goodsName" class="tab-control" @tabClick="tabClick"/>
+      <goods-list :goods="showGoods"/>
+    </scroll>
 
-    <div style="height: 1000px"></div>
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import * as homeApi from "@/network/home";
 import TabControl from "@/components/content/tabControl/TabControl";
 import NavBar from "@/components/common/navbar/NavBar";
 import GoodsList from "@/components/content/goods/GoodsList";
+import Scroll from "@/components/common/scroll/Scroll";
 
 import HomeSwiper from "@/views/home/childComps/HomeSwiper";
 import HomeRecommendView from "@/views/home/childComps/HomeRecommendView";
@@ -46,7 +48,7 @@ export default {
     },
   },
   components: {
-    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl, GoodsList,
+    NavBar, HomeSwiper, HomeRecommendView, FeatureView, TabControl, GoodsList, Scroll,
   },
   created() {
     this.getHomeMultidata();
@@ -70,7 +72,7 @@ export default {
     getGoods(type) {
       const pageNow = this.goods[type].page + 1;
       homeApi.getHomeGoods(type, pageNow).then(res => {
-        console.log(res.data.list);
+        console.log(res);
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
       }).catch(err => {
@@ -95,12 +97,31 @@ export default {
 }
 
 #home {
-  margin-top: 44px;
+  padding-top: 44px;
+  height: 100vh;
+  position: relative;
 }
 
 .tab-control {
   position: sticky;
   top: 44px;
   z-index: 8;
+}
+
+/*.content {*/
+/*  margin-top: 44px;*/
+/*  height: calc(100% - 93px);*/
+/*  overflow: hidden;*/
+/*}*/
+
+.content {
+  overflow: hidden;
+
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+
 }
 </style>
