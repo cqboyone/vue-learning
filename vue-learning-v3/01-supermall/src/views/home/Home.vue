@@ -4,8 +4,7 @@
       <div slot="center">购物街</div>
     </nav-bar>
     <scroll class="content" ref="scroll"
-            :probe-type="3" @scroll="contentScroll"
-            :pull-up-load="true" @pullingUp="loadMore">
+            :probe-type="3" @scroll="contentScroll">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend-view :recommends="recommends"></home-recommend-view>
       <feature-view/>
@@ -60,6 +59,12 @@ export default {
     this.getHomeGoods('new',)
     this.getHomeGoods('sell',)
   },
+  mounted() {
+    const refresh = this.debounce(this.$refs.scroll.refresh,50);
+    this.$bus.$on('itemImageLoad', () => {
+      refresh();
+    })
+  },
   methods: {
     /**
      * 网络请求相关
@@ -94,13 +99,18 @@ export default {
       this.$refs.scroll.scrollTo(0, 0)
     },
     contentScroll(position) {
-      this.isShowBackTop = position.y < -1000 ;
+      this.isShowBackTop = position.y < -1000;
     },
-    loadMore(){
-      this.getHomeGoods(this.goodsType[this.goodsIndex])
-      this.$refs.scroll.finishPullUp()
+    debounce(func, delay) {
+      let timer = null;
+      return function (...args) {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this, args)
+          console.log('调用debounce完成');
+        }, delay)
+      }
     },
-
   }
 }
 </script>
