@@ -56,9 +56,9 @@ export default {
   },
   created() {
     this.getHomeMultidata();
-    this.getGoods('pop',)
-    this.getGoods('new',)
-    this.getGoods('sell',)
+    this.getHomeGoods('pop',)
+    this.getHomeGoods('new',)
+    this.getHomeGoods('sell',)
   },
   methods: {
     /**
@@ -73,7 +73,7 @@ export default {
         console.log(err);
       })
     },
-    getGoods(type) {
+    getHomeGoods(type) {
       const pageNow = this.goods[type].page + 1;
       homeApi.getHomeGoods(type, pageNow).then(res => {
         // console.log(res);
@@ -97,7 +97,7 @@ export default {
       this.isShowBackTop = position.y < -1000 ;
     },
     loadMore(){
-      this.getGoods(this.goodsType[this.goodsIndex])
+      this.getHomeGoods(this.goodsType[this.goodsIndex])
       this.$refs.scroll.finishPullUp()
     },
 
