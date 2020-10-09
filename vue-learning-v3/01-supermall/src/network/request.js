@@ -3,7 +3,7 @@ import Axios from "axios";
 export function request(config) {
   // 1.创建axios实例
   const instance = Axios.create({
-    baseURL: 'https://mall.toolman.ga/api',
+    baseURL: 'https://mall.toolman.ga/mall',
     timeout: 5000
   })
 
